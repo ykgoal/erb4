@@ -505,15 +505,19 @@ python-django --- htmx
 ----------------------------------------------------
 
 
+a)
 google search-->postgresql
 https://www.postgresql.org/
 download-->linux-->Ubuntu
+
 in terminal-->
 sudo apt install postgresql
 
 
-
 ......
+terminal results
+================
+
 [sudo] password for yk: 
 Reading package lists... Done
 Building dependency tree... Done
@@ -615,24 +619,22 @@ Processing triggers for libc-bin (2.39-0ubuntu8.3) ...
 ......
 
 
+b)
+
 sudo -u postgres psql 
 postgres=# \password postgres
 Enter new password for user "postgres": 123
 Enter it again: 123
 
 
-postgres=# 
-CREATE DATABASE bcredb OWNER postgres;      
-/l;
-exit;
+postgres=# CREATE DATABASE bcredb OWNER postgres;      
+postgres=# /l;
+postgres=# exit;
 
 
 
-
-
-
-
-
+c)
+c1)
 google search --> pgadmin
 https://www.pgadmin.org/
 download-->pgAdmin 4-->APT
@@ -641,13 +643,16 @@ bcredb
 # Setup the repository
 #
 
+c2)
 # Install the public key for the repository (if not done previously):
 curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
 
+c3)
 # Create the repository configuration file:
 sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
 
 
+c4)
 #
 # Install pgAdmin
 #
@@ -658,7 +663,7 @@ sudo apt install pgadmin4
                                                 # sudo apt update
 
 
-
+c5)
 in pgAdmin4
 ===========
 
@@ -676,12 +681,14 @@ servers-->bcredb-->Databases-->bcredb-->right-click->properties
 security-->+-->grantee(postgres)-->Ctc(ALL)-->
 
 
+
+c6)
 https://superset.apache.org/docs/configuration/databases/
 https://pypi.org/project/psycopg2/
 
 
 in terminal-->
-max
+mac
 ===
 export PG_HOME=/Library/PostgreSQL/17
 export PATH=$PATH:$PG_HOME/bin
@@ -694,6 +701,9 @@ sudo apt install libpq-dev python3-dev
 pip install psycopg2
 
 
+......
+terminal results
+================
 Collecting psycopg2
   Downloading psycopg2-2.9.10.tar.gz (385 kB)
   Preparing metadata (setup.py) ... done
@@ -704,10 +714,10 @@ Building wheels for collected packages: psycopg2
 Successfully built psycopg2
 Installing collected packages: psycopg2
 Successfully installed psycopg2-2.9.10
+......
 
 
-
-
+c7)
 in bcred/settings
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -731,9 +741,13 @@ DATABASES = {
 }
 
 
+c8)
 python manage.py migrate                # create admin tables in postgres
 
-created in bcredb-->schemas-->public--> tables-->auth...(10 files)
+
+......
+terminal results
+================
 
 Operations to perform:
   Apply all migrations: admin, auth, contenttypes, sessions
@@ -756,14 +770,26 @@ Running migrations:
   Applying auth.0011_update_proxy_permissions... OK
   Applying auth.0012_alter_user_first_name_max_length... OK
   Applying sessions.0001_initial... OK
+......
+
+created in bcredb-->schemas-->public--> tables-->auth...(10 files)
 
 
 
-
+c9)
 listings-->models.py
 
 
 ForeignKey - on_delete=models.DO_NOTHING
+
+CASCADE
+PROTECT
+RESTRICT
+SET_NULL
+SET_DEFAULT
+SET()
+DO_NOTHING
+
 
 CharField
 TextField
@@ -782,18 +808,25 @@ DateTimeField
 
 a)
 
+a1)
 edit listings/models.py, realtors/models.py
 
+
+a2)
 django class --> build a table object
 
 pip install pillow              # for ImageField
                                 # pip install --upgrage pip     ## upgrage pip
 
-
+a3)
 stop terminal-runserver
 
+
+a4)
 python manage.py makemigrations 
 ------
+terminal results-->
+===================
 Migrations for 'realtors':
   realtors/migrations/0001_initial.py
     - Create model Realtor
@@ -802,6 +835,110 @@ Migrations for 'listings':
     - Create model Listing
 ------
 
+
+a5)
+                                        #python manage.py sqlmigrate listings 001
+python manage.py migrate
+
+------
+terminal results-->
+===================
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, listings, realtors, sessions
+Running migrations:
+  Applying realtors.0001_initial... OK
+  Applying listings.0001_initial... OK
+------
+
+
+------
+in pgAdmin 4
+============
+create 2 tables(listings_listing, realtors_realtor)
+-------
+
+
+a6)
+
+python manage.py createsuperuser
+
+------
+terminal results
+================
+Username (leave blank to use 'yk'): yk
+Email address: 123@abc.com
+Password: 
+Password (again): 
+This password is too short. It must contain at least 8 characters.
+This password is entirely numeric.
+Bypass password validation and create user anyway? [y/N]: y
+Superuser created successfully.
+------
+
+
+http://localhost:8000/admin/
+
+
+a7)
+in listings/admin.py
+=====================
+from .models import Listing
+# Register your models here.
+admin.site.register(Listing)
+
+in realtors/admin.py
+====================
+from .models import Realtor
+# Register your models here.
+admin.site.register(Realtor)
+
+# Listing(class)--->listings(group, objects)--->listing(one object)
+
+
+a8)
+
+in bcre/settings.py
+===================
+# media folder
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+in bcre/urls.py
+===============
+urlpatterns = [
+    
+    path('', include('pages.urls')),
+    path('listings', include('listings.urls')), 
+    path('admin/', admin.site.urls),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+a9)
+
+###django html
+###.virtualenvs-->prog2->lib-->pthhon3.9-->site-packages-->
+###django-->contrib-->admin-->templates-->admin-->base.html
+
+
+a10) change admin-site css
+
+a10a>
+in templates
+make admin fold and make a new file base_site.html
+
+
+a10b>
+chrome extention-->chromewebstore
+Eye Dropper
+
+
+a10c>
+bcre-->static-->css-->admin.css
+python manage.py collectstatic   
+
+
+
+a11)
 
 
 
