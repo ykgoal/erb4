@@ -1,0 +1,1074 @@
+
+
+'''
+
+----------------------------------------------------
+2024-11-21
+----------------------------------------------------
+
+Statement (del list) 動作
+Expression (value, address, () ) 運算
+見括弧先運算
+
+----------------------------------------------------
+20241123
+----------------------------------------------------
+
+
+pyenv   -ls
+        -l
+        -versions
+        -intall -l
+        -V
+    
+~workon project
+
+anaconda
+
+152.42.237.161
+
+build --> Python version for diff CPU
+
+----------------------------------------------------
+
+
+JS engine                              Server(software)    
+                         
+ --------  abc.com   -----  request   ------------------                Value
+| brower | -------> | DNS | -------> | URL Pattern      | Expression    -------------------------------------
+ --------  Domain    -----           | / root/index     |-->fx()-----> | Value                               |
+    ^                                | /about           |-->fx()-----> |           Place Holder              |
+    |                                | / Products/small |-->fx()-----> | db Server ------------>hmtl context |
+    |                                | 404              |               -------------------------------------
+    |                                 ------------------                        ||
+    |                                   endpoint                                \/                        
+    |                                                                   ----------------
+    |                       response                                   | html 文字      |
+    -<-------------------------------<-------------------------------<-| css 排版, 化裝 |
+                                                                       | js 動態        |
+                                                                       | media          |
+                                                                        ----------------    
+
+    URL = RESTFUL API
+----------------------------------------------------
+
+
+ASW         App Server, Media Server, DB server
+----------
+|  |  |  | <-- Service ID, share CPU, RAM, Storage
+----------
+|  |  |  |
+----------
+|  |  |  |
+----------
+
+----------------------------------------------------
+
+
+Server Backend                                                          Front End
+-----------------------------------------------------------             --------------
+| JAVA (big enterprise)   --> Sprint Boot                 |             | home About |
+| c++ ( replace by Rust ) --> .Net Asp                    |             |------------|
+| Python                  --> Django, Flask               |    html     |            |
+| Rusy (澳洲)             --> Rail                        |--> css  --> |            |    
+| J.S.                    --> Node JS --> Next JS --> T3  |    js       |            | 
+|                                        mean, Mern, Mevn |             |------------|
+| PHP                     --> larave                      |             | footer     |
+-----------------------------------------------------------             -------------|
+
+
+PHP --> XAMP (Linux)
+        WAMP (Windows)
+        
+
+----------------------------------------------------       
+
+Pythono --> Interpreter --> Byte Code ----> Cpython VM --> Machine Code
+                            (referance table)
+                           Files ( __PYC__, __.PYC )
+                           0 LOAD_Global
+                           2 LOAD_Const
+                           4 CallFuncion
+                           6 pop_Top
+                           
+                                                                
+---------------------------------------------------- 
+client                  server
+REACT                   DJANGO
+ANGULAR                 ASP.NET CORED
+VUE                     EXPRESS
+
+
+
+
+
+
+The compiling Steps of Cpython
+
+1. Installation
+2. Parse tree and abstract syntax generation
+3.               lexer   tokens   parse     syntax tree
+    '400 + 300'  -----> 400+300   ------>   expression    
+                        num parse           sum (400+300)
+                        
+4. Byte Code Generation & Optimization
+5. Code object Generation & Optimization
+
+source code(.py files) --> byte code(.pyc files) -->  platform (parent, low level)
+
+
+
+----------------------------------------------------
+2024-11-25
+----------------------------------------------------
+                           
+UML     統一塑模語言（英語：Unified Modeling Language，縮寫UML）
+---
+structural UML diagram
+1.Class diagram
+2.Object diagram
+3.Composite Structure diagram
+4.Deployment 
+5.Package diagram
+6.Profit diagram
+7.State diagram
+8.Sequence diagram (user flow)
+
+
+類圖（Class Diagram）
+構件圖（Component diagram）
+複合結構圖（Composite structure diagram）
+部署圖（Deployment diagram）
+物件圖（Object diagram）
+套件圖（Package diagram）
+
+django x.2 (confirm version)
+
+integer (counting system)
+float (application system)
+
+         1. mutable(change) - [], {}
+data-->  2. immutable(replace) - 1, 'a', 1.0, true/false 
+
+0.1, 0.3... = infinite number
+
+
+Python
+======
+a.  Numbers     1. Integral------> Integers-->Booleans(python~ True=1, False=0)
+                2. Non-Integral--> Floats(c double), Complex, Decimals, Fractions
+        
+        
+Python 的虛數 j
+Fractions
+Python dynamtic data type
+
+
+b.  Collections---> Sequences--> Mutable  --> Lists
+                                 Imutable --> Tuples, Strings
+                    Sets     --> Mutable  --> Sets
+                                 Imutable --> Fronzen Sets
+                    Mappings --> Dictionaries  
+
+
+c.  Callable
+d.  Singletons --> None
+
+
+
+
+
+https://stackoverflow.com/questions/27949510/django-float-field-input
+homework = forms.FloatField(
+    required=False, max_value=10, min_value=0, 
+    widget=forms.NumberInput(
+        attrs={'id': 'form_homework', 'step': "0.01"}
+    )
+) 
+
+
+Float vs Decimal in Python  (Fractions)
+https://www.laac.dev/blog/float-vs-decimal-python/
+
+
+
+----------------------------------------------------
+2024-11-26
+----------------------------------------------------
+
+
+Python operator --> function()
+x>0 = x.__gt__(0)
+x+1 = x.__add__(1)
+
+
+iterable
+list, str, tuple
+a[1] = a.__getitem__(1)         # get item
+a = [1, 2, 3]
+for x in a:
+    print(x)
+
+
+dict, file objects,
+a['a'] = a.__iter__()           # get key
+a = {'a': 1, 'b': 2, 'c': 3}    
+for x in a:
+    print(x, a[x])
+    
+
+----------------------------------------------------
+
+Python (collections of data)ython 
+
+1. List[][] 
+    (Changeable)
+    len(list), 
+    thislist = ["apple", "banana", "cherry"]
+    thislist.append("orange")
+    thislist.insert(1, "orange")
+    thislist.extend(tropical)
+    
+    thislist = ["apple", "banana", "cherry"]
+    thistuple = ("kiwi", "orange")
+    thislist.extend(thistuple)
+    
+    Remove a random item by using the pop() method:    
+    thisset.remove("banana")
+    remove(), discard(), thislist.pop(1)), del list
+    
+    for x in thislist:
+        print(x)
+        
+    for i in range(len(thislist)):
+        print(thislist[i])
+        
+    print(x) for x in thislist
+
+
+    fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+    newlist = []
+    
+    for x in fruits:
+      if "a" in x:
+        newlist.append(x)
+    print(newlist)    
+        
+        
+    newlist = [expression for item in iterable if condition == True]
+    The return value is a new list, leaving the old list unchanged.
+
+    fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+    
+    newlist = [x for x in fruits if "a" in x]
+    
+    print(newlist)
+
+
+    newlist = [x for x in range(10)]
+    newlist = [x for x in range(10) if x < 5]
+    newlist = [x.upper() for x in fruits]
+
+
+    fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+    newlist = [x if x != "banana" else "orange" for x in fruits]
+    print(newlist)
+
+    thislist.sort(), thislist.sort(reverse = True)
+
+    thislist.sort(key = str.lower)
+    thislist.reverse()
+    
+    Copy Lists
+    mylist = thislist.copy()
+    mylist = list(thislist)
+    mylist = thislist[:]
+    
+    
+    Join Two Lists
+    1. list3 = list1 + list2
+    2. for x in list2:
+         list1.append(x)
+    3. list1.extend(list2)
+    
+
+
+    append()	Adds an element at the end of the list
+    clear()	    Removes all the elements from the list
+    copy()	    Returns a copy of the list
+    count()	    Returns the number of elements with the specified value
+    extend()	Add the elements of a list (or any iterable), to the end of the current list
+    index()	    Returns the index of the first element with the specified value
+    insert()	Adds an element at the specified position
+    pop()	    Removes the element at the specified position
+    remove()	Removes the item with the specified value
+    reverse()	Reverses the order of the list
+    sort()	    Sorts the list
+
+
+
+
+    
+
+2. Tuple , ()() -- single intruction(1 byte) -- run speed fastest
+    (Unchangeable)
+    len(tuple)
+
+    a = 1, 2, 3, [1,2,3]
+    a[3][1]=10
+    print(a)
+    a = 1, 2, 3, [1,10,3] 
+
+
+3. Set{}
+    (Unchangeable, Duplicates Not Allowed, ramdom order)
+    len(set), 
+
+
+4. Dictionary{key1:value1, key2:value2, }
+    (Changeable, Duplicates Not Allowed)
+    len(dict), 
+    thisdict = {
+      "brand": "Ford",
+      "model": "Mustang",
+      "year": 1964
+    }
+    thisdict["color"] = "red"
+
+    Order Dictionary{}
+    
+----------------------------------------------------
+
+import keyword
+print(keyword.kwlist)
+print(sorted(keyword.kwlist))
+['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 
+'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 
+'return', 'try', 'while', 'with', 'yield']
+
+
+
+
+----------------------------------------------------
+2024-11-27
+----------------------------------------------------
+
+https://myapollo.com.tw/blog/python-iterable-iterator-generator/
+
+help(__name__)
+
+----------------------------------------------------
+
+
+換行 '\'
+
+comment 
+docstrings #
+longstrings ''' '''
+
+' this is a \
+long string '
+
+''' this is a \
+long string '''
+
+
+----------------------------------------------------
+
+
+, is operator
+
+
+----------------------------------------------------
+
+def a():        --|
+    x=1           | <--- Code Block 
+    y=2           |
+    z=3         --|
+
+||
+\/
+ram mark a address
+||
+\/
+reference table a(fx)(address)
+
+
+
+id(a) = a = address
+hex()
+
+----------------------------------------------------
+
+
+----------------------------------------------------
+2024-11-28
+----------------------------------------------------
+
+
+functional programming
+
+
+cpython's stack
+===============
+call stack  ------> a() (回郵地址)
+ev stack    ------> 1+1
+block stack ------> def a():
+
+
+BigInt data type
+Python Integer no limit
+
+def a(x, y, z=3):
+        Arguments(Varibles)
+        
+a(1, 2, 3)
+    Parameters(Values)
+    
+    
+----------------------------------------------------
+def a(x):
+    print(x)
+    print(hex(id(x)))
+    x()
+    print('i am from function a')
+
+    
+def b():
+     print('i am from function b')  
+    
+  
+     
+a(b)
+
+
+result
+======
+<function b at 0x79fa7f3247c0>
+0x79fa7f3247c0
+i am from function b
+i am from function a
+
+
+----------------------------------------------------
+    
+def a(x):
+    print(x)
+    print(hex(id(x)))
+    x()
+    print('i am from function a')
+    return x
+    
+def b():
+     print('i am from function b')  
+     return b
+  
+     
+a(b)()()()
+
+
+result
+======
+<function b at 0x7840b4e3c7c0>
+0x7840b4e3c7c0
+i am from function b
+i am from function a
+i am from function b
+i am from function b
+i am from function b
+
+
+----------------------------------------------------
+
+def b():
+     print('i am from function b')  
+     return a
+
+
+def a(x=b):
+    print(x)
+    print(hex(id(x)))
+    x()
+    print('i am from function a')
+    return x
+    
+     
+a(b)()()()
+
+
+
+result
+======
+<function b at 0x735f5fbc4540>
+0x735f5fbc4540
+i am from function b
+i am from function a
+i am from function b
+<function b at 0x735f5fbc4540>
+0x735f5fbc4540
+i am from function b
+i am from function a
+i am from function b
+
+
+
+
+----------------------------------------------------
+2024-11-29
+----------------------------------------------------
+
+
+def a(w, x, y, z):
+    return x+y      (return address)
+    
+    
+i = a(1, 2, 3, 4)
+
+
+
+
+
+
+----------------------------------------------------
+2024-12-02
+----------------------------------------------------
+
+functional programming
+
+parse 解析
+
+(1) interpreter
+
+.py --> bytecode --> vm runtime(browser - chrome, edge...)
+
+
+(2) complier
+
+.py --> bytecode + lib code --> make --> exe
+
+----------------------------------------------------
+
+JIT - just in time
+
+----------------------------------------------------
+
+def c():
+    pass
+    
+def b():
+    pass
+    
+def a():
+    y=1
+    if y>0:
+        a(b)
+    else:
+        a(c)
+        
+----------------------------------------------------
+
+default if ignore - return None 
+*******************************
+x = print('x')
+print(x)
+result:
+x
+None
+
+
+def a():
+    result = 1
+    return result
+
+       
+       
+globle varible (address)
+----------------------------------------------------
+                                                                    when run a(1)
+def a(x):                   reference table     ram                 block stack(2)
+    ----------              a   0x100           0x100 y=1           x = 1
+    |y = 1   |code block    z   0x200                 print(z)      y = 1
+    |print(z)|                                  0x200 4             print(z)
+    ----------                                  0x300 1
+                                                                    reference table(2)
+z=4                                                                 x   0x300
+a(1)                                                                y   0x300
+                                                                    z   0x200
+
+
+def a(x):
+    y = 1
+
+    print(id(z))
+
+z = 4
+print(id(z))
+z = 5
+print(id(z))
+a(1)
+
+print(z)
+
+result
+======
+131722533864744
+131722533864776
+131722533864776
+5
+
+
+----------------------------------------------------
+def a():
+    print('i am from function a')    
+    return b
+
+def b():
+    print('i am from function b')
+    return a
+    
+a()()()()
+
+result
+------
+i am from function a
+i am from function b
+i am from function a
+i am from function b
+
+
+----------------------------------------------------
+
+def a():
+    print('i am from function a')    
+
+
+    def b():
+        print('i am from function b')
+        
+        
+    c = b, 
+    b = 10
+    return c
+    
+a()[0]()
+
+result
+------
+i am from function a
+i am from function b
+
+
+----------------------------------------------------
+Python Closure
+----------------------------------------------------
+https://dboyliao.medium.com/%E8%81%8A%E8%81%8A-python-closure-ebd63ff0146f
+
+
+----------------------------------------------------
+https://www.youtube.com/watch?v=pM9IO3FCULQ
+----------------------------------------------------
+
+
+if exp :
+    code block
+elif exp :
+    code block
+else:
+    code block
+    
+
+while exp :
+    code block
+    controller (x-=1)
+    break
+    continue
+else:
+
+
+for i in []:
+    break
+    
+    
+range(slice)    slice = python data object ( start[default=0], ending-1, step[default=1])
+                yield , last value + step  
+                
+----------------------------------------------------  
+
+# Import math Library
+import math
+
+# Return the square root of different numbers
+print (math.sqrt(9))
+print (math.sqrt(25))
+print (math.sqrt(16))
+
+sqrt(result) * 1
+
+
+----------------------------------------------------
+2024-12-03
+----------------------------------------------------
+
+----------
+
+Python Iterators
+slice
+
+<class 'range'>
+range(slice)    slice = python data object ( start[default=0], ending-1, step[default=1])
+                yield , last value + step 
+                
+lst[s:end-1:step]            
+list[::]  # default = [0:len(lst):1]
+
+
+      -5 -4 -3 -2 -1
+list=[1, 2, 3, 4, 5]
+      0  1  2  3  4
+
+     abs(-5)+0 = abs(-4)+1 = abs(-3)+2 = abs(-2)+3 = abs(-1)+4 = 5 (len)
+     
+    i, j
+    [i:j:+step] 
+    if i, j > len(lst) then i, j = len(lst)
+    i is missing i=0, if j is missing j=len(lst)
+    if i, j < 0  i,j=max(0, len(lst)+i,j)
+     
+    [i:j:-step] 
+    if i, j > len(lst) then i, j = len(lst) - 1
+    if i, j < 0  i,j=max(-1, len(lst)+i,j)   
+    i is missing i=len(lst)-1, if j is missing j =0
+      
+     
+----------------------------------------------------
+2024-12-04
+----------------------------------------------------
+
+https://zealdocs.org/
+
+print(globals())
+
+
+lst = [1,3,5,10,...650000]
+l1 = [i for i in range(0, 65000) if not i%2]
+
+
+
+----------------------------------------------------
+
+m, n =5, 5
+l1 = [[i,j] for i in range(0, m) if not i%2 for j in range(0, n) if j%2]
+print(l1)
+
+
+def temp():
+    tmp=[]
+    for i in range(m):
+        if i%2:
+            for j in range(n):
+                if not (j%2):
+                    tmp.append([i,j])
+
+----------------------------------------------------
+
+# ternary if 
+
+x = 1
+if x > 0:
+    x = x +1
+else:
+    x = x - 1
+print(x)
+x=1
+x = x + 1 if x >0 else x -1
+print(x)
+
+----------------------------------------------------
+
+lambda
+
+z = lambda x,y : x + y          # js, arrow function, z = (x,y) => x + y 
+result = z(1,2)
+print(result)
+
+
+dictionary (hashing)
+constant(key) : value
+'str'       
+int
+(,)
+
+for location, population in location_data.items():
+    city, country = location
+    print(f'The population of {city} in {country} in {population}.')
+    
+
+
+
+----------------------------------------------------
+2024-12-05
+----------------------------------------------------
+
+Django I18N (translate)
+
+
+linux 24
+python 3.9.13
+php 8.3.12
+
+
+semantics!
+----------
+x = 10                              def my_func(a, b):
+y = 'a'                             # code here
+
+my func(x, y)
+
+module scope                        function scope
+x   -->          0x100 10    <--    a
+y   -->          0x200 'a'   <--    b
+
+----------------------------------------------------
+
+everything in python is object
+
+class --> object
+
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+  def __str__(self):
+    return f"{self.name}({self.age})"
+    
+p1 = Person("John", 36)
+
+print(p1.name)
+print(p1.age)
+
+----------------------------------------------------
+
+
+class toy:
+    head = 'blue'
+    body = 'blue'
+    def jump(self, x):                  # self = object (toy1)
+        print('toy is running', x)
+        print('self', self)
+
+    
+toy1 = toy()
+toy2 = toy()
+print(toy1.head, toy1.body)
+toy1.jump(1)
+toy2.jump(2)
+
+print(toy1, toy1.jump)
+print(toy2, toy2.jump)
+
+result
+------
+blue blue
+toy is running 1
+self <__main__.toy object at 0x73308ef94c90>
+toy is running 2
+self <__main__.toy object at 0x73308ef94d90>
+<__main__.toy object at 0x73308ef94c90> <bound method toy.jump of <__main__.toy object at 0x73308ef94c90>>
+<__main__.toy object at 0x73308ef94d90> <bound method toy.jump of <__main__.toy object at 0x73308ef94d90>>
+
+
+https://tailwindcss.com/
+
+django 4.2, 5.2, (work version)
+
+PostgreSQL - pgAdmin
+
+Ubuntu
+
+https://www.kwchang0831.dev/dev-env/ubuntu/oh-my-zsh
+Zsh
+Oh My Zsh
+Powerlevel10k 主題
+zsh-autosuggestions
+zsh-syntax-highlighting
+Zsh-z
+
+
+
+
+tmux remote control         $me, #you
+
+
+
+vim editor
+
+
+CSS Abbreviations - Emmet Documentation
+
+
+----------------------------------------------------
+2024-12-06
+----------------------------------------------------
+
+
+class Toy:
+
+    head = 'blue'
+    body = 'blue'
+    def jump(self, x):                          # def jump is medthod(obj)
+        print('toy is running', self.head)      # self = object (toy1) address
+        print('self', self)
+
+
+
+toy1 <  Toy.head    >
+     <  Toy.body    >
+
+
+toy1.jump() = Toy.jump(obj=self)
+  |                     ^
+  |---------------------|
+
+
+
+print('a==b', a == b)           # compare value
+print('a is b', a is b)         # compare address
+
+
+     
+#The dir() function returns all properties and methods of the specified object, without the values.
+print(dir(toy1)) = list all attrib & method 
+
+
+
+meta-class -->build-->class
+
+
+
+linux termainal simulation
+--------------------------
+https://www.terminaltemple.com/
+https://www.tutorialspoint.com/linux_terminal_online.php
+https://www.digitalocean.com/community/tutorials/linux-commands
+https://blog.techbridge.cc/2017/12/23/linux-commnd-line-tutorial/
+https://docs.vultr.com/how-to-install-apache-web-server-on-ubuntu-24-04
+https://ui-code.com/archives/271
+https://wellstsai.com/post/ubuntu-setup/
+
+
+
+crontab：例行性工作排程
+https://ui-code.com/archives/271
+
+
+
+
+DiskGenius
+----------
+https://unikoshardware.com/2023/10/diskgenius-disk-clone-tutorial.html
+DiskGenius 是一款功能強大、體積小巧的磁碟分割管理軟體，可惜免費版存在一些限制，無法透過內建的系統遷移功能轉移 UEFI 系統，
+但筆者測試可以用磁碟對拷功能 (複製磁碟) 進行轉移，接下來為大家示範如何操作，讓你以免費版功能達到付費版效果，
+完成換 SSD 免重灌 Windows 系統。
+
+
+
+arguments
+*args (Non-Keyword Arguments)   def a(x, *args):        args = (, )             turple
+**kwargs (Keyword Arguments)    def a(x,**kwargs):      kwargs = {key:value,}   dict
+
+
+Jinja is a fast, expressive, extensible templating engine. 
+Special placeholders in the template allow writing code similar to Python syntax. 
+Then the template is passed data to render the final document.
+{varible}
+
+
+
+
+print(globals())
+print(__name__)
+
+
+----------------------------------------------------
+2024-12-09
+----------------------------------------------------
+
+https://ivonblog.com/posts/ventoy-linux-installation/
+
+
+Check Network Manager
+sudo systemctl status NetworkManager
+
+
+1)
+sudo apt update                     # sudo apt clean
+sudo apt upgrade
+sudo apt dist-upgrade
+
+2)
+echo $SHELL
+chsh -s /bin/zsh            #change to /bin/zsh
+
+sudo apt install zsh
+sudo apt install git
+
+git --version
+
+chsh -s /path/to/zsh
+chsh -s /usr/bin/zsh
+
+reboot
+
+
+3)
+https://ohmyz.sh/#install
+Install oh-my-zsh now
+install on-my-zsh via wget
+in terminal
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+select (2)
+
+
+app center 
+4) chromium
+5) vscode
+    code .  (Yes, I trust the authors)
+    auto close tag
+    auto rename tag
+    better comments
+    bootstrap 4, font 
+    code spell checker
+    color highlight
+    css peek
+    django v1.15.0
+    html boilerplate
+    html css support
+    image preview
+    indent-rainbow
+    live server
+    prettier - code formatter
+    print
+    pylance
+    python debugger
+    vscode-icons v12.9.0
+    
+    
+    
+    
+***electron
+mac - command-shift-p >path
+
+
+
+nerdfonts.com
+homebrew
+
+
+
+
+
+'''
+
+
+

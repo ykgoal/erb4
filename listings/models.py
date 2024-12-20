@@ -1,4 +1,6 @@
 from django.db import models
+from realtors.models import Realtor
+from datetime import datetime
 
 # Create your models here.
 class Listing(models.Model):

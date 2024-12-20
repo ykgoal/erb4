@@ -1,0 +1,809 @@
+'''
+
+----------------------------------------------------
+2024-12-16
+----------------------------------------------------
+https://www.tutorialspoint.com/python/index.htm
+
+
+
+
+a1)
+in flag(4 arrows)
+python manage.py startapp pages                     #create app in erb4 folder
+
+
+
+a2)
+in settings.py
+
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'pages.apps.PagesConfig',
+]
+
+#pages(pages folder), apps(apps.py), PagesConfig(Class in app.py)
+
+
+
+a3)
+create urls.py in pages folder
+
+in pages/urls.py
+
+from django.urls import path
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),    
+]
+
+
+
+
+a4)
+in bcre/urls.py
+from django.urls import include         #or from django.urls import path,include
+
+urlpatterns = [
+    path('', include('pages.urls')),
+    path('admin/', admin.site.urls),
+]
+
+
+
+
+a5)
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here.
+
+
+def index(request):
+
+    return HttpResponse('<h1>Hello, World!</h1>')
+
+
+
+a6)
+### git init make .git folder, check anything change in working folder 
+
+### delete .git folder if any error
+
+
+
+
+a7) flag(arrow) in termail
+working folder --> project folder --> settings, urls
+               --> apps folder
+.git
+.virturalenvs --> django -->cms/admin/user 
+python version
+
+
+
+a8)
+
+python manage.py runserver
+
++---------------+                             +-----------------------+
+|server:8000    |      <--request---          |localhost:8000/""      |
+|listen         |                             |               endpoint|   
+|""             |                             |                       |
+|/products/about|(route)                      |                       |
++---------------+      ---response-->         +-----------------------+
+
+
+step 1
+bcre                                   
+|
+V
+urls.py
+|
+V
+pages.urls.py, listings.urls.py
+
+
+step 2
+pages.urls.py
+|
+V
+2-1) register def.views
+2-2) run def() in views.py
+2-3) rendering (html,css, js)
+urlpatterns = [
+    path('', views.index, name='index'),    
+]
+
+
+
+python -- event loop
+
+
+bcre-->urls.py                              # urls.py(route)
+urlpatterns = [
+    path('', include('pages.urls')),
+    path('listings', include('listings.urls')),
+    path('admin/', admin.site.urls),    
+]
+
+
+a9)
+MVT
+m - models, db
+v - views, fx()
+t - templates, html, display
+
+
+
+
+b1)
+git
+sha1 - produces a 40-digit hexadecimal number
+sudo apt install curl 
+curl -X POST http://localhost:8000/
+ 
+ 
+blob - file length(14) - \0 hello world!
+
+
+in ~djprojcet/git-ex/
+echo 'Hello, World!' | git hash-object --stdin
+8ab686eafeb1f44702738c8b0f24f2567c36da6d
+
+
+echo 'blob 14\0Hello, World!' | openssl sha1
+SHA1(stdin)= 8ab686eafeb1f44702738c8b0f24f2567c36da6d
+
+
+git init
+
+
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/yk/djproject/git-ex/.git/
+
+displayed --> master flag
+
+
+
+echo 'Hello, World!' | git hash-object -w --stdin
+8ab686eafeb1f44702738c8b0f24f2567c36da6d
+.git-->object-->8a-->b686eafeb1f44702738c8b0f24f2567c36da6d
+
+sudo apt install tree 
+
+tree
+
+
+mkdir copies
+
+git add .
+
+git cat-file -t b45ef6                      # type, tree=folder, blob = file
+git cat-file -t 8ab6
+
+git cat-file -p 21af95 
+
+git commit -m "step1" 
+
+git log
+
+.git-->refs-->heads-->master
+
+git restore hello.txt
+git restore *                               # restore same folder ??
+git status
+
+
+
+
+
+
+
+
+
+
+work folder                       staging                              sha1 commit
+hello.txt--->git add.             --->hello.txt--->git commit -m "step"--->hello.txt
+         <---git restore file_name
+         <---                                      git checkout sha1   <---
+
+
+
+
+github, gitee, gitlab
+csdn.net
+
+
+
+b2)
+settings file
+TIME_ZONE = 'UTC'
+||
+VV
+TIME_ZONE = 'Asia/Hong_Kong'
+
+
+git add .
+git commit -m "Step 2 build pages app"   
+
+
+settings file
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        ||
+        VV
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],       
+        
+
+create ~djproject/erb4/templates/pages
+index.html
+about.html
+
+
+b3)
+html-->>segmentic
+
+
+
+----------------------------------------------------
+2024-12-17
+----------------------------------------------------
+
+index.html
+<head>
+</head>
+<body>
+</body>
+
+
+create base.html in templates/base.html
+
+index
+==============
+base.html
+top.html
+nav.html
+    index.html
+footer
+
+
+create static folder in bcre
+create static/css, img, js, webfonts (assets)       #logo, icon, background img
+
+STATIC_URL = 'static/'
+||
+VV
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'bcre/static')
+]
+
+
+python manage.py collectstatic  
+156 static files copied to '/home/yk/djproject/erb4/static'.
+
+created
+bcre
+pages
+-->static<--                        #django static location
+
+
+{% statement %}
+{{ expression }}
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATIC_URL = 'static/'
+
+#
+python manage.py collectstatic  
+156 static files copied to '/home/yk/djproject/erb4/static'.
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'bcre/static')
+]
+
+
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href={% static "css/all.css" %} />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href={% static "css/bootstrap.css" %} />
+    <!-- Custom -->
+    <link rel="stylesheet" href={% static "css/style.css" %} />
+    <!-- Lightbox -->
+    <link rel="stylesheet" href={% static "css/lightbox.min.css" %} />
+    <title>BC Real Estate</title>
+  </head>
+
+  <body>
+    {% block content %} {% endblock %}
+    <script src={% static "js/jquery-3.3.1.min.js" %}></script>
+    <script src={% static "js/bootstrap.bundle.min.js" %}></script>
+    <script src={% static "js/main.js" %}></script>
+    <script src={% static "js/lightbox.min.js" %}></script>    
+  </body>
+</html>
+
+
+create templates/partials
+_topbar.html
+_navbar.html
+_footer.html
+
+
+git add .
+git commit -m "Step 4 build pages app"   
+git log 
+
+
+
+
+
+github
+create repository
+quicksetup ->ssh
+in terminal-->
+git remote add origin git@github.com:ykgoal/erb4.git
+git push -u origin master               #main to master
+                                        #ssh -T git@github.com
+
+The authenticity of host 'github.com (20.205.243.166)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+Enumerating objects: 233, done.
+Counting objects: 100% (233/233), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (226/226), done.
+Writing objects: 100% (233/233), 2.86 MiB | 781.00 KiB/s, done.
+Total 233 (delta 49), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (49/49), done.
+To github.com:ykgoal/erb4.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+
+
+
+
+
+clone
+=====
+mkdir ~/djproject/test
+git clone https://github.com/ykgoal/erb4.git
+
+### rm -rf test             #delete whole folder in linux
+
+
+
+----------------------------------------------------
+2024-12-18
+----------------------------------------------------
+
+https://www.freecodecamp.org/news/use-svg-images-in-css-html/
+https://getbootstrap.com/docs/4.0/components/navbar/
+https://getbootstrap.com/docs/4.0/components/navbar/
+
+
+
+
+in brec (projects)
+urlpatterns = [
+    path('', include('pages.urls')),
+    path('admin/', admin.site.urls),
+]
+
+'admin/'
+abc.com/""/""
+abc.com/index/index
+
+
+in pages (apps)
+urlpatterns = [
+    path('', views.index, name='index'),    
+    path('about', views.about, name='about'),   
+]
+
+path(endpoint, views, {% url "index" %})    #name is only-one in a project
+                                            ******************************
+                                            
+                                            
+
+python manage.py collectstatic          #copy bcre/static to static
+
+
+{{ request.path }}
+
+
+
+backup to github
+================
+git add .
+git commit -m "Step 7 update index about static"   
+git push -u origin master                           # -u up-stream, mypc to github
+                                                    # git pull origin master,  github to mypc
+
+
+create new apps
+===============
+in terminal-->
+python manage.py startapp listings 
+python manage.py startapp realtors
+
+bcre/settins-->
+INSTALLED_APPS = [
+    'listings.apps.listingsConfig',    
+    'Realtors.apps.Realtors.Config',  
+]
+||
+VV
+auto create class in apps.py                        #Listings/apps.py, Realtors/apps.py
+
+
+
+python rest api
+===============
+abc.com/resources/endpoint
+        /listings/listing
+        /products/t-shirts/red
+                 /hats/hat
+                 /hats/id
+        
+        
+never use crud as endpoint name
+send data asd JSON(usually)
+stateless # don't save currentPage, /ours/page/6
+
+
+
+python-django --- htmx
+
+
+
+
+
+
+----------------------------------------------------
+2024-12-19
+----------------------------------------------------
+
+
+google search-->postgresql
+https://www.postgresql.org/
+download-->linux-->Ubuntu
+in terminal-->
+sudo apt install postgresql
+
+
+
+......
+[sudo] password for yk: 
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libcommon-sense-perl libjson-perl libjson-xs-perl libpq5 libtypes-serialiser-perl postgresql-16 postgresql-client-16 postgresql-client-common postgresql-common
+Suggested packages:
+  postgresql-doc postgresql-doc-16
+The following NEW packages will be installed:
+  libcommon-sense-perl libjson-perl libjson-xs-perl libpq5 libtypes-serialiser-perl postgresql postgresql-16 postgresql-client-16 postgresql-client-common postgresql-common
+0 upgraded, 10 newly installed, 0 to remove and 19 not upgraded.
+Need to get 17.3 MB of archives.
+After this operation, 51.1 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://hk.archive.ubuntu.com/ubuntu noble/main amd64 libjson-perl all 4.10000-1 [81.9 kB]
+Get:2 http://hk.archive.ubuntu.com/ubuntu noble-updates/main amd64 postgresql-client-common all 257build1.1 [36.4 kB]
+Get:3 http://hk.archive.ubuntu.com/ubuntu noble-updates/main amd64 postgresql-common all 257build1.1 [161 kB]
+Get:4 http://hk.archive.ubuntu.com/ubuntu noble/main amd64 libcommon-sense-perl amd64 3.75-3build3 [20.4 kB]
+Get:5 http://hk.archive.ubuntu.com/ubuntu noble/main amd64 libtypes-serialiser-perl all 1.01-1 [11.6 kB]
+Get:6 http://hk.archive.ubuntu.com/ubuntu noble/main amd64 libjson-xs-perl amd64 4.030-2build3 [83.6 kB]
+Get:7 http://hk.archive.ubuntu.com/ubuntu noble-updates/main amd64 libpq5 amd64 16.6-0ubuntu0.24.04.1 [141 kB]
+Get:8 http://hk.archive.ubuntu.com/ubuntu noble-updates/main amd64 postgresql-client-16 amd64 16.6-0ubuntu0.24.04.1 [1,271 kB]
+Get:9 http://hk.archive.ubuntu.com/ubuntu noble-updates/main amd64 postgresql-16 amd64 16.6-0ubuntu0.24.04.1 [15.5 MB]
+Get:10 http://hk.archive.ubuntu.com/ubuntu noble-updates/main amd64 postgresql all 16+257build1.1 [11.6 kB]                                                                   
+Fetched 17.3 MB in 30s (583 kB/s)                                                                                                                                             
+Preconfiguring packages ...
+Selecting previously unselected package libjson-perl.
+(Reading database ... 158847 files and directories currently installed.)
+Preparing to unpack .../0-libjson-perl_4.10000-1_all.deb ...
+Unpacking libjson-perl (4.10000-1) ...
+Selecting previously unselected package postgresql-client-common.
+Preparing to unpack .../1-postgresql-client-common_257build1.1_all.deb ...
+Unpacking postgresql-client-common (257build1.1) ...
+Selecting previously unselected package postgresql-common.
+Preparing to unpack .../2-postgresql-common_257build1.1_all.deb ...
+Adding 'diversion of /usr/bin/pg_config to /usr/bin/pg_config.libpq-dev by postgresql-common'
+Unpacking postgresql-common (257build1.1) ...
+Selecting previously unselected package libcommon-sense-perl:amd64.
+Preparing to unpack .../3-libcommon-sense-perl_3.75-3build3_amd64.deb ...
+Unpacking libcommon-sense-perl:amd64 (3.75-3build3) ...
+Selecting previously unselected package libtypes-serialiser-perl.
+Preparing to unpack .../4-libtypes-serialiser-perl_1.01-1_all.deb ...
+Unpacking libtypes-serialiser-perl (1.01-1) ...
+Selecting previously unselected package libjson-xs-perl.
+Preparing to unpack .../5-libjson-xs-perl_4.030-2build3_amd64.deb ...
+Unpacking libjson-xs-perl (4.030-2build3) ...
+Selecting previously unselected package libpq5:amd64.
+Preparing to unpack .../6-libpq5_16.6-0ubuntu0.24.04.1_amd64.deb ...
+Unpacking libpq5:amd64 (16.6-0ubuntu0.24.04.1) ...
+Selecting previously unselected package postgresql-client-16.
+Preparing to unpack .../7-postgresql-client-16_16.6-0ubuntu0.24.04.1_amd64.deb ...
+Unpacking postgresql-client-16 (16.6-0ubuntu0.24.04.1) ...
+Selecting previously unselected package postgresql-16.
+Preparing to unpack .../8-postgresql-16_16.6-0ubuntu0.24.04.1_amd64.deb ...
+Unpacking postgresql-16 (16.6-0ubuntu0.24.04.1) ...
+Selecting previously unselected package postgresql.
+Preparing to unpack .../9-postgresql_16+257build1.1_all.deb ...
+Unpacking postgresql (16+257build1.1) ...
+Setting up postgresql-client-common (257build1.1) ...
+Setting up libpq5:amd64 (16.6-0ubuntu0.24.04.1) ...
+Setting up libcommon-sense-perl:amd64 (3.75-3build3) ...
+Setting up libtypes-serialiser-perl (1.01-1) ...
+Setting up libjson-perl (4.10000-1) ...
+Setting up libjson-xs-perl (4.030-2build3) ...
+Setting up postgresql-client-16 (16.6-0ubuntu0.24.04.1) ...
+update-alternatives: using /usr/share/postgresql/16/man/man1/psql.1.gz to provide /usr/share/man/man1/psql.1.gz (psql.1.gz) in auto mode
+Setting up postgresql-common (257build1.1) ...
+
+Creating config file /etc/postgresql-common/createcluster.conf with new version
+Building PostgreSQL dictionaries from installed myspell/hunspell packages...
+  en_us
+Removing obsolete dictionary files:
+Created symlink /etc/systemd/system/multi-user.target.wants/postgresql.service → /usr/lib/systemd/system/postgresql.service.
+Setting up postgresql-16 (16.6-0ubuntu0.24.04.1) ...
+Creating new PostgreSQL cluster 16/main ...
+/usr/lib/postgresql/16/bin/initdb -D /var/lib/postgresql/16/main --auth-local peer --auth-host scram-sha-256 --no-instructions
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.UTF-8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/16/main ... ok
+creating subdirectories ... ok
+selecting dynamic shared memory implementation ... posix
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting default time zone ... Asia/Hong_Kong
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+Setting up postgresql (16+257build1.1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.3) ...
+......
+
+
+sudo -u postgres psql 
+postgres=# \password postgres
+Enter new password for user "postgres": 123
+Enter it again: 123
+
+
+postgres=# 
+CREATE DATABASE bcredb OWNER postgres;      
+/l;
+exit;
+
+
+
+
+
+
+
+
+google search --> pgadmin
+https://www.pgadmin.org/
+download-->pgAdmin 4-->APT
+bcredb
+#
+# Setup the repository
+#
+
+# Install the public key for the repository (if not done previously):
+curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
+
+# Create the repository configuration file:
+sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+
+
+#
+# Install pgAdmin
+#
+
+# Install for both desktop and web modes:
+sudo apt install pgadmin4
+
+                                                # sudo apt update
+
+
+
+in pgAdmin4
+===========
+
+add new server
+
+general-->bcredb
+connection->localhost
+          ->password(123)
+save
+
+created server(bcredb)
+
+
+servers-->bcredb-->Databases-->bcredb-->right-click->properties
+security-->+-->grantee(postgres)-->Ctc(ALL)-->
+
+
+https://superset.apache.org/docs/configuration/databases/
+https://pypi.org/project/psycopg2/
+
+
+in terminal-->
+max
+===
+export PG_HOME=/Library/PostgreSQL/17
+export PATH=$PATH:$PG_HOME/bin
+
+linux
+=====
+export PG_HOME=/lib/postgresql/16
+export PATH=$PATH:$PG_HOME/bin
+sudo apt install libpq-dev python3-dev
+pip install psycopg2
+
+
+Collecting psycopg2
+  Downloading psycopg2-2.9.10.tar.gz (385 kB)
+  Preparing metadata (setup.py) ... done
+Building wheels for collected packages: psycopg2
+  Building wheel for psycopg2 (setup.py) ... done
+  Created wheel for psycopg2: filename=psycopg2-2.9.10-cp39-cp39-linux_x86_64.whl size=506953 sha256=a836902199bc733e5f325c487304477ff5233cdfda6d5c3c01b0d537a910012e
+  Stored in directory: /home/yk/.cache/pip/wheels/a3/f0/13/36dd45ba7a971c79ded4f3003e5f4652d262195d0e8ea8f249
+Successfully built psycopg2
+Installing collected packages: psycopg2
+Successfully installed psycopg2-2.9.10
+
+
+
+
+in bcred/settings
+# Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+||
+VV
+DATABASES = {
+    'default': {
+        'ENGINE' : 'django.db.backends.postgresql',
+        'NAME' : 'bcredb',
+        'USER' : 'postgres',
+        'PASSWORD' : '123',
+        'HOST' : 'localhost',
+    }
+}
+
+
+python manage.py migrate                # create admin tables in postgres
+
+created in bcredb-->schemas-->public--> tables-->auth...(10 files)
+
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+
+
+
+
+listings-->models.py
+
+
+ForeignKey - on_delete=models.DO_NOTHING
+
+CharField
+TextField
+IntegerField
+DecimalField
+ImageField
+BooleanField
+DateTimeField
+
+
+
+
+----------------------------------------------------
+2024-12-20
+----------------------------------------------------
+
+a)
+
+edit listings/models.py, realtors/models.py
+
+django class --> build a table object
+
+pip install pillow              # for ImageField
+                                # pip install --upgrage pip     ## upgrage pip
+
+
+stop terminal-runserver
+
+python manage.py makemigrations 
+------
+Migrations for 'realtors':
+  realtors/migrations/0001_initial.py
+    - Create model Realtor
+Migrations for 'listings':
+  listings/migrations/0001_initial.py
+    - Create model Listing
+------
+
+
+
+
+
+'''
