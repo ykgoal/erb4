@@ -939,6 +939,206 @@ python manage.py collectstatic
 
 
 a11)
+listings-->admin.py
+from django.contrib import admin
+
+******
+from .models import Listing
+# Register your models here.
+
+class ListingAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'is_published', 
+                    'price', 'list_date', 'realtor')
+    list_display_links = ('id', 'title')
+    list_filter = 'realtor',
+    list_editable = 'is_published',
+    search_fields = 'title', 'description', 'address', 'price',
+    list_per_page = 25
+
+admin.site.register(Listing, ListingAdmin)
+******
+
+realtors-->admin.py
+from django.contrib import admin
+
+from django.contrib import admin
+
+from .models import Realtor
+# Register your models here.
+
+
+class RealtorAdmin(admin.ModelAdmin):
+    list_display = 'id', 'name', 'email', 'hire_date'
+    list_display_links = 'id', 'name',
+    list_filter = 'name',
+    list_per_page = 25
+
+
+admin.site.register(Realtor, RealtorAdmin)
+
+******
+
+
+----------------------------------------------------
+2024-12-23
+----------------------------------------------------
+
+
+a)
+
+google search-->Django Debug Toolbar
+https://django-debug-toolbar.readthedocs.io/en/latest/
+-->Installation
+python -m pip install django-debug-toolbar
+
+
+in bcre/settings
+================
+
+a1)
+INSTALLED_APPS = [
+
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'debug_toolbar',
+    ================
+    'pages.apps.PagesConfig',
+    'listings.apps.ListingsConfig',    
+    'realtors.apps.RealtorsConfig',    
+]
+
+a2)
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ==================================================
+]
+
+
+a3) exists, don't change
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        =================
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+
+a4)
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
+
+
+
+a5)
+in bcre/urls
+============
+from django.conf import settings
+from debug_toolbar.toolbar import debug_toolbar_urls
+
+if not settings.TESTING:
+    urlpatterns = [
+        *urlpatterns,
+    ] + debug_toolbar_urls()
+    
++ debug_toolbar_urls()   
+======================
+
+
+
+
+b)
+google search-->digital ocean django deploy
+https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu
+
+b1)
+local proj-->github-->Digital Ocean
+
+aws-->easy2
+
+
+
+c) django syntec error check
+pip install pylint-django
+
+
+d)
+{{ listing.photo_main.url }} = {{ listing['photo_main'].url }}
+
+
+
+e)
+google search-->django humanize
+https://docs.djangoproject.com/en/5.1/ref/contrib/humanize/
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    ==========================
+    'debug_toolbar',
+    'pages.apps.PagesConfig',
+    'listings.apps.ListingsConfig',    
+    'realtors.apps.RealtorsConfig',    
+]
+
+
+in templates(html)
+==================
+{% load humanize %} 
+
+
+
+
+f)
+
+in templates/listings/listings.html
+<a href={% url "listing" listing.id %} class="btn btn-primary btn-block"
+        ==============================
+
+
+
+g)
+google search-->django pagination
+https://docs.djangoproject.com/en/5.1/topics/pagination/
+
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+
+
+submit-->settings/urls-->listing/urls-->views-->templates
+
+
+g)
+google search-->django queryset
+https://docs.djangoproject.com/en/5.1/ref/models/querysets/
 
 
 
