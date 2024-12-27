@@ -18,7 +18,7 @@
                 </p>
                 <div class="search">
                 {% comment %} fix search.html later {% endcomment %}                
-                    <form action={% url "search" %}>
+                    <form action={% url "search" %} method="GET">
                         <!-- Form Row 1 -->
                         <div class="form-row">
                             <div class="col-md-4 mb-3">
@@ -35,16 +35,17 @@
                                 <label class="sr-only">street</label>
                                 <input
                                 type="text"
-                                name="street"
+                                name="title"
                                 class="form-control"
-                                placeholder="Street"
+                                placeholder="Title"
                                 />
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label class="sr-only">District</label>
                                 <select name="district" class="form-control">
-                                    <option selected="true" d<h1>index page</h1>ict (All)
+                                    <option selected="true" disabled="disabled">
+                                        Districts (All)
                                     </option>
                                     {% for key, value in district_choices.items %}
                                     <option value={{ key }}>{{ value }}</option> 
