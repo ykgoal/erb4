@@ -1142,5 +1142,76 @@ https://docs.djangoproject.com/en/5.1/ref/models/querysets/
 
 
 
+----------------------------------------------------
+2024-12-24
+----------------------------------------------------
+
+1)
+dummy varible = {% for x in y %} {% endfor %}
+
+2)
+google search-->font awsome
+https://fontawesome.com/search
+
+3)
+vscode
+======
+don't move folder in vscode
+use delete-->re-copy
+
+4)
+nextjs.org
+the react framework for the web
+
+
+
+----------------------------------------------------
+2024-12-27
+----------------------------------------------------
+
+a)
+get - length too shorthttps://www.deepseek.com/
+post - safe
+
+
+b)
+html
+name="title" --- name declare a varible name
+value= --- input value
+
+
+c)
+google search-->deepseek
+https://www.deepseek.com/
+
+
+d)
+chathub
+llama 3
+
+
+e)
+http://localhost:8000/listings/search?keywords=&title=&district=Yau_Tsim_Mong
+http://localhost:8000/listings/search?keywords=&title=&District=Yau_Tsim_Mong
+
+
+f)
+http://43.159.58.12:37192/dff3d8b8
+
+
+g)
+local-->nginx-->web
+bcre-->wsgi.py, asgi.py #deploy gateway
+ddos
+
+
+h)
+{{ listing.get_district_display }}          #.get_varible_display
+
+
+
+
+
 
 '''
+

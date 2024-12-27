@@ -539,3 +539,551 @@ def index(request):
 
 
 
+
+
+'''
+
+
+----------------------------------------------------
+2024-12-09
+----------------------------------------------------
+
+https://ivonblog.com/posts/ventoy-linux-installation/
+
+
+Check Network Manager
+sudo systemctl status NetworkManager
+
+
+                            # sudo apt clean
+
+
+
+1)
+sudo apt update                     
+sudo apt upgrade
+sudo apt dist-upgrade
+
+2)
+echo $SHELL
+chsh -s /bin/zsh            # change to /bin/zsh
+
+sudo apt install zsh
+sudo apt install git
+
+git --version
+git -v
+git version 2.43.0
+
+
+chsh -s /path/to/zsh
+chsh -s /usr/bin/zsh
+
+reboot
+
+terminal change to -> ~
+
+
+
+3)
+https://ohmyz.sh/#install
+Install oh-my-zsh now
+install on-my-zsh via wget
+in terminal
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+select (2)
+
+prompt chanaged
+-> ~
+
+
+4) app center  
+   chromium
+
+
+5) app center 
+   vscode
+   zsh syntax highlighting install
+    cd ~
+    code .  (Yes, I trust the authors)
+     
+    
+    auto close tag
+    auto rename tag
+    better comments
+    bootstrap 4, font 
+    code spell checker
+    color highlight
+    css peek
+    django v1.15.0
+    html boilerplate Version 1.1.1
+    html css support
+    image preview
+    indent-rainbow 8.3.1
+    live server 5.7.9
+    prettier - code formatter
+    print
+    pylance
+    python debugger
+    vscode-icons v12.9.0
+    peacock
+    
+    
+    
+***electron
+mac - command-shift-p >path
+x-code
+
+
+nerdfonts.com                       #Mononoki.zip
+homebrew
+
+
+
+----------------------------------------------------
+2024-12-10
+----------------------------------------------------
+
+bash            # mono
+zsh             # color
+
+
+.zshrc          # rc  - config file
+.zsh_history    # command line log records
+
+
+(a)
+google search --> powerlevel9k
+https://github.com/Powerlevel9k/powerlevel9k
+1) installation
+2) Install the Powerlevel9k Theme
+3) Option 2: Install for Oh-My-ZSH
+4) git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+
+5) vscode --> ~/.oh-my-zsh/custom/themes/powerlevel9k
+ 
+
+(b)
+vscode --> .zshrc  
+
+export ZSH="$HOME/.oh-my-zsh"
+
+##ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_PYENV_PROMPT_ALWAYS_SHOW=true
+
+##plugins=(git)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting virtualenv pyenv)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs virtualenv pyenv)
+POWERLEVEL9K_PYTHON_ICON="\UE73C"
+
+
+POWERLEVEL9K_MODE="nerdfont-complete"
+POWERLEVEL9K_PYENV_BACKGROUND="229"
+POWERLEVEL9K_VIRTUALENV_BACKGROUND="154"
+
+
+(c)
+google search --> zsh syntax highlighting install
+https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+Oh-my-zsh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+
+(d)
+google search --> zsh autosuggestions plugin
+https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+Oh My Zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+
+(e)
+google search --> pyenv
+https://github.com/pyenv/pyenv
+A. Getting Pyenv
+2. Basic GitHub Checkout
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
+
+terminal error:
+Found pyenv, but it is badly configured (pyenv command not found in $PATH). pyenv might not
+work correctly for non-interactive shells (for example, when run from a script).
+
+To fix this message, add these lines to the '.profile' and '.zprofile' files
+in your home directory:
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+source $ZSH/oh-my-zsh.sh                # move to end of file
+
+You'll need to restart your user session for the changes to take effect.
+For more information go to https://github.com/pyenv/pyenv/#installation.
+
+
+
+https://github.com/pyenv/pyenv
+B. Set up your shell environment for Pyenv
+Zsh
+Details
+  
+  echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+  echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+  echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+
+  export PYENV_ROOT="$HOME/.pyenv"
+  [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+
+terminal paste and enter
+
+reboot--> 
+terminal --> home(blue)>system(yellow)
+
+
+
+
+(f)
+
+install GCC in terminal               #C compiler
+sudo apt update
+sudo apt install build-essential   
+
+
+sudo apt update 
+sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev 
+sudo apt install -y libreadline-dev libsqlite3-dev libffi-dev libncursesw5-dev 
+sudo apt install -y libgdbm-dev libnss3-dev liblzma-dev uuid-dev tk-dev libexpat1-dev #libmpdec-dev
+
+
+sudo apt install -y 
+build-essential libssl-dev zlib1g-dev libbz2-dev
+libreadline-dev libsqlite3-dev 
+llvm 
+libncurses5-dev or libncursesw5-dev
+xz-utils
+tk-dev
+libxml2-dev
+libxmlsec1-dev
+libffi-dev
+liblzma-dev
+
+
+pyenv install -l     
+pyenv install 3.10.5  
+  3.9.13
+  3.12.8
+
+
+----------------------------------------------------
+2024-12-11
+----------------------------------------------------
+
+replit
+
+gui, cui
+
+
+.pyenv
+versions (folder)
+verson (file)
+
+
+pyenv global 3.10.5         #global, shell, local
+python -V
+
+
+venv, pyenv, virtualenv
+
+
+google search --> gitbub pyenv-virtualenvwrapper
+https://github.com/pyenv/pyenv-virtualenvwrapper
+$ git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $(pyenv root)/plugins/pyenv-virtualenvwrapper
+
+
+.zshrc
+#VIRTUALENV
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV='true' 
+export WORKON_HOME=$HOME/.virtualenvs
+pyenv virtualenvwrapper_lazy
+
+
+re-open terminal                #auto install virtualenv
+
+
+vscode
+setup-->setting
+git-->setings.json
+{
+    "files.exclude": {
+        "**/.git": false,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+    }
+}
+
+{
+    "workbench.iconTheme": "vscode-icons",
+
+    "files.exclude": {
+        "**/.git": false,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+    }
+
+}
+
+
+
+mkdir ~djproject/erb4                   #create new folder (project folder)
+change to ~djproject/erb4
+mkvirtualenv proj2                      #create new proj2 in .virtualenv folder
+pip freeze                              #check if empty env
+pip list                                #list python's installed packages
+python -m pip install --upgrade pip     #upgrade pip ==== pip install
+pip install django==4.2                 #pip install django 4.2
+pip show django                         #show info of django
+
+
+deactivate                              #close proj2
+workon proj2
+pyenv local 3.9.13                      #create .python-verson in ~djproject-version   
+
+
+
+----------------------------------------------------
+2024-12-13
+----------------------------------------------------
+
+https://fintechost.com/
+https://ecom.fintechost.com/
+
+workon                          #show all virtualen proj
+
+
+daily
+1) ~djproject/erb4              #enter proj folder #~djproject/erb4, include *.py, *.html, ...
+2) workon proj2                 #virtualenv #proj2, include python's packages
+3) pyenv local 3.9.13 
+
+
+virtualenv-->proj2-->lib-->pyvenv.cfg
+pyenv local 3.9.13 --> create python-version(3.9.13) in folder erb4
+
+
+pyenv - global
+pyenv - local
+pyenv - shell (temp , disappear after terminal closed)
+
+
+asgi, wsgi - server gateway
+ 
+ 
+create django project
+=====================
+a) in terminal
+   pip show django
+   django-admin startproject bcre .                 # . return folder
+
+b) python manage.py runserver                       # 127.0.0.1:8000 or localhost:8000
+
+c) #Initialized empty Git repository in /home/yk/djproject/erb4/.git/
+   #in djproject/erb4
+   
+   git init
+
+
+    hint: Using 'master' as the name for the initial branch. This default branch name
+    hint: is subject to change. To configure the initial branch name to use in all
+    hint: of your new repositories, which will suppress this warning, call:
+    hint: 
+    hint: 	git config --global init.defaultBranch <name>
+    hint: 
+    hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+    hint: 'development'. The just-created branch can be renamed via this command:
+    hint: 
+    hint: 	git branch -m <name>
+    Initialized empty Git repository in /home/yk/djproject/erb4/.git/
+ 
+ 
+   created <master flag> 
+
+
+
+d) google search --> gitignore
+   https://www.toptal.com/developers/gitignore/
+   django-->create
+   copy to .gitignore(manual create, same folder in manage.py)
+
+
+
+e) use githut account->ykgoal,ykgoal@gmail.com 
+   in terminal
+   git config --global user.name "ykgoal"
+   git config --global user.email "ykgoal@gmail.com" 
+   terminal --> ~ --> code . --> .gitconfig
+   [user]
+      name = ykgoal
+	  email = ykgoal@gmail.com
+
+
+f) Generate SSH Keys
+   terminal entry-->
+   ssh-keygen -t ed25519 -C "ykgoal@gmail.com"
+
+   all hit 'enter'
+
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/yk/.ssh/id_ed25519): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/yk/.ssh/id_ed25519
+Your public key has been saved in /home/yk/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:Y7hRTbe4M/mgYai5bF7DNwwxjopBMg/7it3mCGLUwqE ykgoal@gmail.com
+The key's randomart image is:
++--[ED25519 256]--+
+|          . .    |
+|         o o .   |
+|+o    o . o .    |
+|==o  o *   o     |
+|E+... * S *      |
+|.+.. + B + =     |
+|+.o o = =   .    |
+|++ +oo o .       |
+|o o=*            |
++----[SHA256]-----+
+
+
+
+created ~'.ssh' folder 
+- id_ed25519 - private 
+- id_ed25519.pub - public
+
+goto github.com
+settings-->SSH and GPG keys                 #every computer has UUID, and create a new SSH key for every computer
+paste id_ed25519.pub to SSH keys
+
+
+
+g)
+
+git add .                                   #change master flag color
+git commit -m "step 1 project init"         #package project
+
+    [master (root-commit) d4294f1] step 1 project init
+     8 files changed, 374 insertions(+)
+     create mode 100644 .gitignore
+     create mode 100644 .python-version
+     create mode 100644 bcre/__init__.py
+     create mode 100644 bcre/asgi.py
+     create mode 100644 bcre/settings.py
+     create mode 100644 bcre/urls.py
+     create mode 100644 bcre/wsgi.py
+     create mode 100755 manage.py
+
+
+git log                                     # 'q' to exit
+                                            # git restore
+
+
++-----------------+      +-------------------------------+
+|working directory|      | .git(hidden) Repositoy        |
++-----------------+      +-------------------------------+
+|index.html       |      |Staging Area| |Comments        |
+|style.css        |      |(Index File)| |(Objects Folder)|
+|images           |      |            | |                |
++-----------------+      +------------+ +----------------+ 
+                         add . -->  commit  --> style.css
+
+
+
+
+
+
+
+                        main
+                        start                
+commit                  milestone
+
+branch          branch(frontend)  main   branch(backend)
+                            merge    merge
+
+
+
+
+h)
+python manage.py startapp pages                     #create app in erb4 folder
+
+in bcre/settings.py
+
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'pages.apps.PagesConfig',
+]
+
+#pages(pages folder), apps(apps.py), PagesConfig(Class in app.py)
+
+
+
+create urls.py in pages folder
+
+in pages/urls.py
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),    
+]
+
+
+
+in bcre/urls.py
+from django.urls import include         #or from django.urls import path,include
+
+urlpatterns = [
+    path('', include('pages.urls')),
+    path('admin/', admin.site.urls),
+]
+
+
+in pages/views.py
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here.
+
+
+def index(request):
+
+    return HttpResponse('<h1>Hello, World!</h1>')
+
+
+
+
+    
+'''
+
+
+
+
+
+
+

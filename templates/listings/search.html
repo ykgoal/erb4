@@ -111,7 +111,6 @@
 
 
 
-
 <!-- Listings -->
 <section id="listings" class="py-4">
     <div class="container">
@@ -136,7 +135,7 @@
                             <div class="listing-heading text-center">
                                 <h4 class="text-primary">{{ listing.title }}</h4>
                                 <p>
-                                <i class="fas fa-map-marker text-secondary"></i>{{ listing.district }}
+                                <i class="fas fa-map-marker text-secondary"></i>{{ listing.get_district_display }}
                                 </p>
                             </div>
                             <hr />

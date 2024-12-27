@@ -48,10 +48,9 @@ def search(request):
     if 'district' in request.GET:
         district = request.GET['district']        
         if district:
-            queryset_list = queryset_list.filter(district__iexact = district)
-            print(district)
-            print(queryset_list.count)            
-
+            if district != '_':
+                queryset_list = queryset_list.filter(district__iexact = district)
+        
     if 'price' in request.GET:
         price = request.GET['price']
         if price:
