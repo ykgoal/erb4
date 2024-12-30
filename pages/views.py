@@ -19,6 +19,7 @@ def index(request):
 
     return render(request, 'pages/index.html', context)
 
+    #return HttpResponse('<h1>Hello, World!</h1>')
 
 def about(request):
 
