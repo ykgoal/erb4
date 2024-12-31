@@ -3,8 +3,11 @@
 {% load static %}
 {% load humanize %} 
 
+{% block title %} | Features {% endblock %}
+
 {% block content %}
 
+{% include 'partials/_alert.html' %}
 
 <section id="showcase-inner" class="py-5 text-white">
     <div class="container">
